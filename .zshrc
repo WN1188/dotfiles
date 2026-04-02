@@ -87,4 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # https://realpython.com/python-virtual-environments-a-primer/
 export WORKON_HOME=$HOME/.virtualenvs   # optional
 export PROJECT_HOME=$HOME/projects      # optional
-[[ -f /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
