@@ -106,6 +106,10 @@ dot-resume() {
     echo "DoT resumed."
 }
 
-# VS Code as default editor
-export EDITOR="code --wait"
+# VS Code as default editor where it exists (servers fall back to vim)
+if command -v code >/dev/null 2>&1; then
+  export EDITOR="code --wait"
+else
+  export EDITOR=vim
+fi
 export VISUAL="$EDITOR"
