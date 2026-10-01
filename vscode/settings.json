@@ -1,0 +1,7 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "claudeCode.preferredLocation": "panel",
+    "terminal.integrated.defaultProfile.linux": "zsh"
+}
