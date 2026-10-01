@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/Applications:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -90,3 +91,21 @@ export PROJECT_HOME=$HOME/projects      # optional
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+export PATH="$HOME/.local/bin:$PATH"
+
+# DNS-over-TLS captive portal helpers
+# Use dot-pause at hospitals, coffee shops, etc. when the login page won't load
+dot-pause() {
+    sudo sed -i 's/DNSOverTLS=opportunistic/DNSOverTLS=no/' /etc/systemd/resolved.conf
+    sudo systemctl restart systemd-resolved
+    echo "DoT paused — run dot-resume when authenticated."
+}
+dot-resume() {
+    sudo sed -i 's/DNSOverTLS=no/DNSOverTLS=opportunistic/' /etc/systemd/resolved.conf
+    sudo systemctl restart systemd-resolved
+    echo "DoT resumed."
+}
+
+# VS Code as default editor
+export EDITOR="code --wait"
+export VISUAL="$EDITOR"
